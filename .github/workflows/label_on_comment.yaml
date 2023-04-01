@@ -1,7 +1,7 @@
 name: "ghapi - Create Label on Comment"
 
 on:
-    pull_request:
+    issue_comment:
 
 permissions:
     contents: read
