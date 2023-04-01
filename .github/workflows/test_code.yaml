@@ -12,4 +12,4 @@ jobs:
             - name: Run unit-test on sortColors
               run: |
                   pip install -U pytest
-                  pytest Assignment-1/test_sort_colors.py
+                  pytest Assignment-1/
