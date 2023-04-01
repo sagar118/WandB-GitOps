@@ -10,4 +10,6 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Run unit-test on sortColors
-              run: pytest Assignment-1/test_sort_colors.py
+              run: |
+                  pip install -U pytest
+                  pytest Assignment-1/test_sort_colors.py
