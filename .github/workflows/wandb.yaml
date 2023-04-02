@@ -7,7 +7,7 @@ permissions:
     pull-requests: write
 jobs:
     wandb-compare:
-        if: (github.event.issue.pull_request != null) && conatins(github.event.comment.body, '/wand')
+        if: (github.event.issue.pull_request != null) && contains(github.event.comment.body, '/wand')
         runs-on: ubuntu-latest
         steps:
             - name: Get repo contents
