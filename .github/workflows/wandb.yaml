@@ -41,7 +41,7 @@ jobs:
                   WANDB_ENTITY: sagar118
                   WANDB_PROJECT: cicd-quickstart
                   BASELINE_TAG: baseline
-                  RUN_ID: ${{ steps.check-match.outputs.ID }}
+                  RUN_ID: "${{ steps.check-match.outputs.ID }}"
                   WANDB_API_KEY: ${{ secrets.WANDB_API_KEY }}
 
 #             - name: Make Comment in PR
