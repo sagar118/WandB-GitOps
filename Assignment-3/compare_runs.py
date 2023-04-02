@@ -22,7 +22,7 @@ def comapre_runs(entity='sagar118',
     entity = os.getenv('WANDB_ENTITY', entity)
     project = os.getenv('WANDB_PROJECT', project)
     tag = os.getenv('BASELINE_TAG', tag)
-    run_id = os.getenv('ID', run_id)[0]
+    run_id = os.getenv('RUN_ID', run_id)[0]
 
     assert run_id, 'Run id must be present in the enironment variable or passed as an arguement'
 
