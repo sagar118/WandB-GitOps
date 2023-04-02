@@ -16,7 +16,7 @@ jobs:
             - name: Install dependencies
               run: pip install ghapi wandb
 
-            - name: Parse value from the command
+            - name: Parse value from the comment
               id: check-match
               shell: python
               run: |
@@ -27,7 +27,7 @@ jobs:
                   with open(os.environ['GITHUB_OUTPUT'], 'a') as handle:
                     if len(match) > 0:
                         print(f'FOUND=true', file=handle)
-                        print(f'ID={match}'', file=handle)
+                        print(f'ID={match}', file=handle)
                     else:
                         print(f'FOUND=false', file=handle)
               env:
