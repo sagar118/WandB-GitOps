@@ -27,7 +27,7 @@ jobs:
                   with open(os.environ['GITHUB_OUTPUT'], 'a') as handle:
                     if len(match) > 0:
                         print(f'FOUND=true', file=handle)
-                        print(f'ID={match}', file=handle)
+                        print(f'ID={match[0]}', file=handle)
                     else:
                         print(f'FOUND=false', file=handle)
               env:
