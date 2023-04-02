@@ -9,7 +9,7 @@ def get_baseline_scores(entity='sagar118',
     "Get the baseline run from the project using tags"
 
     api = wandb.Api()
-    run = api.run(f'{entity}/{project}', {'tags': {'in': [tag]}})
+    run = api.runs(f'{entity}/{project}', {'tags': {'$in': [tag]}})
     assert len(run) == 1
     return run[0]
 
