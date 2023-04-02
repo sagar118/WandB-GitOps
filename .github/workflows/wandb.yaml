@@ -24,14 +24,15 @@ jobs:
                   comment = os.getenv('PR_COMMENT', '')
                   pattern = r"/wandb[\s]+(\w+)"
                   match = re.findall(pattern, comment)
-                  if len(match) > 0:
-                    echo "FOUND=true" >> $GITHUB_OUTPUT
-                    echo "MATCH=$(match)" >> $GITHUB_OUTPUT
-                  else:
-                    echo "FOUND=false" >> $GITHUB_OUTPUT
+                  with open(os.environ['GITHUB_OUTPUT'], 'a') as handle:
+                    if len(match) > 0:
+                        print(f'FOUND=true', file=handle)
+                        print(f'ID={match}'', file=handle)
+                    else:
+                        print(f'FOUND=false', file=handle)
               env:
                   PR_COMMENT: ${{ github.event.comment.body }}
 
             - name: Show the extracted Id (Debug)
               if: ${{ steps.check-match.outputs.FOUND == 'true' }}
-              run: echo ${{ steps.check-match.outputs.match }}
+              run: echo ${{ steps.check-match.outputs.ID }}
