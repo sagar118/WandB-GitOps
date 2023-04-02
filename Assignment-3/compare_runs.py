@@ -26,6 +26,8 @@ def comapre_runs(entity='sagar118',
 
     print(run_id)
     assert run_id, 'Run id must be present in the enironment variable or passed as an arguement'
+    
+    return ""
 
 #     baseline = get_baseline_scores(entity, project, tag)
 #     report = wr.Report(project=project, title="Compare Baseline vs Latest Run")
@@ -54,7 +56,6 @@ def comapre_runs(entity='sagar118',
 #         with open(os.environ['GITHUB_OUTPUT'], 'a') as handle:
 #             print(f"REPORT_URL={report.url}", file=handle)
 #     return report.url
-      return ""
     
 if __name__ == '__main__':
     print(f"The comparison report can be found at: {comapre_runs()}")
