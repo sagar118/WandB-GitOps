@@ -31,7 +31,7 @@ def comapre_runs(entity='sagar118',
 
     panel_grids = wr.PanelGrid(
         runsets=[
-            wr.Runset(entity, project, "Run Comparison").set_filters_with_python_expr(f"ID in ['{run_id}', '{baseline.id}']")
+            wr.Runset(entity, project, "Run Comparison").set_filters_with_python_expr(f"ID in ['{run_id[0]}', '{baseline.id}']")
         ],
         panels = [
             wr.RunComparer(diff_only='split', layout={'w': 24, 'h': 15}),
