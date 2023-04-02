@@ -1,0 +1,37 @@
+name: "Baseline vs New Model"
+on:
+    issue_comment:
+permissions:
+    contents: read
+    issues: write
+    pull-requests: write
+jobs:
+    wandb-compare:
+        if: (github.event.issue.pull_request != null) && conatins(github.event.comment.body, '/wand')
+        runs-on: ubuntu-latest
+        steps:
+            - name: Get repo contents
+              uses: actions/checkout@v3
+
+            - name: Install dependencies
+              run: pip install ghapi wandb
+
+            - name: Parse value from the command
+              id: check-match
+              shell: python
+              run: |
+                  import re, os
+                  comment = os.getenv('PR_COMMENT', '')
+                  pattern = r"/wandb[\s]+(\w+)"
+                  match = re.findall(pattern, comment)
+                  if len(match) > 0:
+                    echo "FOUND=true" >> $GITHUB_OUTPUT
+                    echo "MATCH=$(match)" >> $GITHUB_OUTPUT
+                  else:
+                    echo "FOUND=false" >> $GITHUB_OUTPUT
+              env:
+                  PR_COMMENT: ${{ github.event.comment.body }}
+
+            - name: Show the extracted Id (Debug)
+              if: ${{ steps.check-match.outputs.FOUND == 'true' }}
+              run: echo ${{ steps.check-match.outputs.match }}
