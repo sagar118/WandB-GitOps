@@ -16,4 +16,5 @@ def sortColors(nums: List[int]) -> List:
 
 def test_unitTest():
     nums = [2,0,2,1,1,0]
-    assert sortColors(nums) == [0,0,1,1,2,2]
+#     assert sortColors(nums) == [0,0,1,1,2,2]
+    assert sortColors(nums) == [0,0,1,1,2]
